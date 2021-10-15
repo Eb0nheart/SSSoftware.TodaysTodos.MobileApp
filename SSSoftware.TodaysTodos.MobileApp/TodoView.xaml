@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:models="clr-namespace:SSSoftware.TodaysTodos.MobileApp.Core.Models;assembly=SSSoftware.TodaysTodos.MobileApp.Core" x:DataType="models:Todo"
+             x:Class="SSSoftware.TodaysTodos.MobileApp.TodoView">
+    <RelativeLayout>
+        <Frame 
+            x:Name="TopBar"
+            BackgroundColor="CadetBlue" 
+            RelativeLayout.YConstraint="0"
+            RelativeLayout.HeightConstraint="80"
+            RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Factor=1, Property=Width}">
+            <Label
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                FontSize="Title"
+                Text="Todays Todos"/>
+        </Frame>
+    </RelativeLayout>
+</ContentPage>
