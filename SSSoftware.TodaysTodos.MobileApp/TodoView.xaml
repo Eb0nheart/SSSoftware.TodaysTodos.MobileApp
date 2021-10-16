@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             xmlns:models="clr-namespace:SSSoftware.TodaysTodos.MobileApp.Core.Models;assembly=SSSoftware.TodaysTodos.MobileApp.Core" x:DataType="models:Todo"
+             xmlns:models="clr-namespace:SSSoftware.TodaysTodos.MobileApp.Core.Models;assembly=SSSoftware.TodaysTodos.MobileApp.Core"
              x:Class="SSSoftware.TodaysTodos.MobileApp.TodoView">
     <RelativeLayout>
         <Frame 
@@ -13,8 +13,35 @@
             <Label
                 HorizontalOptions="Center"
                 VerticalOptions="Center"
+                Text="Todays Todos"
                 FontSize="Title"
-                Text="Todays Todos"/>
+                TextColor="White"
+                FontAttributes="Bold"/>
         </Frame>
+        <CollectionView
+            x:DataType="models:Todo"
+            ItemsSource="{Binding Todos}"
+            RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=TopBar, Property=Height}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid
+                        Padding="24">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="40"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <CheckBox 
+                            Color="White"/>
+                        <Label
+                            Grid.Column="1"
+                            Text="{Binding Description}"
+                            FontSize="24"/>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
     </RelativeLayout>
 </ContentPage>
