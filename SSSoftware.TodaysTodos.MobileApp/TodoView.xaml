@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:local="clr-namespace:SSSoftware.TodaysTodos.MobileApp.Utils"
              xmlns:models="clr-namespace:SSSoftware.TodaysTodos.MobileApp.Core.Models;assembly=SSSoftware.TodaysTodos.MobileApp.Core"
              x:Class="SSSoftware.TodaysTodos.MobileApp.TodoView">
     <RelativeLayout>
@@ -19,7 +20,6 @@
                 FontAttributes="Bold"/>
         </Frame>
         <CollectionView
-            x:DataType="models:Todo"
             ItemsSource="{Binding Todos}"
             RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=TopBar, Property=Height}">
             <CollectionView.ItemTemplate>
@@ -44,4 +44,7 @@
             </CollectionView.ItemTemplate>
         </CollectionView>
     </RelativeLayout>
+    <ContentPage.Behaviors>
+        <local:EventToCommandBehavior EventName="Appearing" Command="{Binding LoadDataCommand}"/>
+    </ContentPage.Behaviors>
 </ContentPage>
