@@ -1,5 +1,4 @@
-﻿
-using SSSoftware.TodaysTodos.MobileApp.Core.ViewModels;
+﻿using SSSoftware.TodaysTodos.MobileApp.Core.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -11,7 +10,7 @@ namespace SSSoftware.TodaysTodos.MobileApp
         public TodoView()
         {
             InitializeComponent();
-            BindingContext = new TodoViewModel();
+            BindingContext = App.GetViewModel<TodoViewModel>();
         }
     }
 }
