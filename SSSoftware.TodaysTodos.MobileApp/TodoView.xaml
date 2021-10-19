@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:local="clr-namespace:SSSoftware.TodaysTodos.MobileApp.Utils"
+             xmlns:models="clr-namespace:SSSoftware.TodaysTodos.MobileApp.Core.Models;assembly=SSSoftware.TodaysTodos.MobileApp.Core"
+             x:Class="SSSoftware.TodaysTodos.MobileApp.TodoView">
+    <RelativeLayout>
+        <Frame 
+            x:Name="TopBar"
+            BackgroundColor="CadetBlue" 
+            RelativeLayout.YConstraint="0"
+            RelativeLayout.HeightConstraint="80"
+            RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Factor=1, Property=Width}">
+            <Label
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Text="Todays Todos"
+                FontSize="Title"
+                TextColor="White"
+                FontAttributes="Bold"/>
+        </Frame>
+        <CollectionView
+            ItemsSource="{Binding Todos}"
+            RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=TopBar, Property=Height}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid
+                        Padding="24">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="40"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <CheckBox 
+                            Color="White"/>
+                        <Label
+                            Grid.Column="1"
+                            Text="{Binding Description}"
+                            FontSize="24"/>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </RelativeLayout>
+    <ContentPage.Behaviors>
+        <local:EventToCommandBehavior EventName="Appearing" Command="{Binding LoadDataCommand}"/>
+    </ContentPage.Behaviors>
+</ContentPage>
